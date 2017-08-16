@@ -147,6 +147,10 @@ export default class Pages extends PureComponent {
       this.scrollState = 1;
     }
 
+    /* this.scroll is null for some reason on android, only do this if scroll is available */
+    if (!this.scroll) {
+      return
+    }
     this.scroll.scrollTo({
       [horizontal? 'x' : 'y']: page * base,
       animated,
